@@ -11,4 +11,13 @@ export class TarefaComponent {
     { id: 1, nome: "Ir ao mercado", concluida: true},
     { id: 2, nome: "Lavar roupas", concluida: false}
   ]
+
+  adicionar(nomeTarefa:string){
+    if(nomeTarefa.trim().length == 0){ return; }
+    const tarefaEncontrada = this.listaTarefas.find(item => item.nome.toLowerCase() == nomeTarefa.toLowerCase())
+    
+    !tarefaEncontrada ? this.listaTarefas.push({id: this.listaTarefas.length, nome:nomeTarefa, concluida: false}) : alert(`Você já cadastrou a tarefa ${nomeTarefa}`)    
+  }
+
+
 }

@@ -1,8 +1,9 @@
 <div>
     <h3>Lista de Tarefas</h3>
-
-    <ul>
-        <li *ngFor="let tarefa of listaTarefas">
+    <input type="text" placeholder="Criar tarefa" #inputTarefa>
+    <button (click)="adicionar(inputTarefa.value)">Adicionar</button>
+    <ul *ngFor="let tarefa of listaTarefas">
+        <li>
             {{tarefa.nome}}
         </li>
     </ul>
