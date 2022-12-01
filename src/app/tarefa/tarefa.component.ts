@@ -19,5 +19,7 @@ export class TarefaComponent {
     !tarefaEncontrada ? this.listaTarefas.push({id: this.listaTarefas.length, nome:nomeTarefa, concluida: false}) : alert(`Você já cadastrou a tarefa ${nomeTarefa}`)    
   }
 
-
+  deletar(id:number){
+    this.listaTarefas = this.listaTarefas.filter(tarefa => tarefa.id !== id)
+  }
 }
