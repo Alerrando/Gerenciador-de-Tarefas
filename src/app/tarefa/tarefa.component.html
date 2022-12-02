@@ -1,11 +1,14 @@
-<div>
+<div class="input_container">
     <h3>Lista de Tarefas</h3>
     <input type="text" placeholder="Criar tarefa" #inputTarefa>
-    <button (click)="adicionar(inputTarefa.value)">Adicionar</button>
+    <button (click)="adicionar(inputTarefa.value)"><i class="fa fa-plus"></i></button>
     <ul *ngFor="let tarefa of listaTarefas">
         <li>
-            {{tarefa.nome}}
+            <div (click)="completar(tarefa.id)">
+                {{tarefa.nome}}
+                <i *ngIf="tarefa.concluida" class="material-icons">done</i>
+            </div>
         </li>
-        <i (click)="deletar(tarefa.id)">Deletar</i>
+        <i (click)="deletar(tarefa.id)" class="material-icons">delete</i>
     </ul>
 </div>

@@ -6,11 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./tarefa.component.css']
 })
 export class TarefaComponent {
-  listaTarefas:any[] = [
-    { id: 0, nome: "Lavar o carro", concluida: false},
-    { id: 1, nome: "Ir ao mercado", concluida: true},
-    { id: 2, nome: "Lavar roupas", concluida: false}
-  ]
+  listaTarefas:any[] = [];
+  TAREFA_KEY = 'tarefa-key';
+  
+  ngOnInit(): void{
+    const tarefas = localStorage.getItem(this.TAREFA_KEY);
+  }
 
   adicionar(nomeTarefa:string){
     if(nomeTarefa.trim().length == 0){ return; }
@@ -21,5 +22,11 @@ export class TarefaComponent {
 
   deletar(id:number){
     this.listaTarefas = this.listaTarefas.filter(tarefa => tarefa.id !== id)
+  }
+
+  completar(id:number){
+    const tarefaEncontrada = this.listaTarefas.find(item => item.id == id);
+
+    if(TarefaComponent) {tarefaEncontrada.concluida = !tarefaEncontrada.concluida;}
   }
 }
